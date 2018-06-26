@@ -5,18 +5,18 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.concurrent.CountDownLatch;
 
+import auctionsniper.domain.value.AuctionItem;
 import org.jivesoftware.smack.XMPPException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import test.endtoend.auctionsniper.ApplicationRunner;
-import test.endtoend.auctionsniper.FakeAuctionServer;
-import auctionsniper.Auction;
-import auctionsniper.AuctionEventListener;
-import auctionsniper.UserRequestListener.Item;
-import auctionsniper.xmpp.XMPPAuctionException;
-import auctionsniper.xmpp.XMPPAuctionHouse;
+import test.endtoend.auctionsniper.composer.ApplicationRunner;
+import test.endtoend.auctionsniper.composer.FakeAuctionServer;
+import auctionsniper.domain.adaptors.xmpp.Auction;
+import auctionsniper.domain.adaptors.xmpp.AuctionEventListener;
+import auctionsniper.ports.xmpp.XMPPAuctionException;
+import auctionsniper.ports.xmpp.XMPPAuctionHouse;
 
 public class XMPPAuctionHouseTest {
   private final FakeAuctionServer auctionServer = new FakeAuctionServer("item-54321");  
@@ -43,10 +43,10 @@ public class XMPPAuctionHouseTest {
   receivesEventsFromAuctionServerAfterJoining() throws Exception { 
     CountDownLatch auctionWasClosed = new CountDownLatch(1); 
     
-    Auction auction = auctionHouse.auctionFor(new Item(auctionServer.getItemId(), 567));
+    Auction auction = auctionHouse.auctionFor(new AuctionItem(auctionServer.getItemId(), 567));
     auction.addAuctionEventListener(auctionClosedListener(auctionWasClosed));
     auction.join(); 
-    auctionServer.hasReceivedJoinRequestFrom(ApplicationRunner.SNIPER_XMPP_ID); 
+    auctionServer.shouldHaveReceivedJoinRequestFrom(ApplicationRunner.SNIPER_XMPP_ID);
     auctionServer.announceClosed(); 
     
     assertTrue("should have been closed", auctionWasClosed.await(4, SECONDS)); 

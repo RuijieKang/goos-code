@@ -1,14 +1,20 @@
 package test.auctionsniper;
 
-import static auctionsniper.SniperState.BIDDING;
-import static auctionsniper.SniperState.LOSING;
-import static auctionsniper.SniperState.LOST;
-import static auctionsniper.SniperState.WINNING;
-import static auctionsniper.SniperState.WON;
+import static auctionsniper.domain.value.SniperState.BIDDING;
+import static auctionsniper.domain.value.SniperState.LOSING;
+import static auctionsniper.domain.value.SniperState.LOST;
+import static auctionsniper.domain.value.SniperState.WINNING;
+import static auctionsniper.domain.value.SniperState.WON;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.samePropertyValuesAs;
 import static org.junit.Assert.assertThat;
 
+import auctionsniper.domain.*;
+import auctionsniper.domain.adaptors.ui.SniperListener;
+import auctionsniper.domain.adaptors.xmpp.Auction;
+import auctionsniper.domain.value.AuctionItem;
+import auctionsniper.domain.value.SniperSnapshot;
+import auctionsniper.domain.value.SniperState;
 import org.hamcrest.FeatureMatcher;
 import org.hamcrest.Matcher;
 import org.jmock.Expectations;
@@ -20,23 +26,17 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import auctionsniper.Auction;
-import auctionsniper.AuctionSniper;
-import auctionsniper.SniperListener;
-import auctionsniper.SniperSnapshot;
-import auctionsniper.SniperState;
-import auctionsniper.AuctionEventListener.PriceSource;
-import auctionsniper.UserRequestListener.Item;
+import auctionsniper.domain.adaptors.xmpp.AuctionEventListener.PriceSource;
 
 @RunWith(JMock.class) 
 public class AuctionSniperTest { 
   protected static final String ITEM_ID = "item-id";
-  public static final Item ITEM = new Item(ITEM_ID, 1234);
+  public static final AuctionItem AUCTION_ITEM = new AuctionItem(ITEM_ID, 1234);
   private final Mockery context = new Mockery(); 
   private final States sniperState = context.states("sniper");
   private final Auction auction = context.mock(Auction.class);
   private final SniperListener sniperListener = context.mock(SniperListener.class);
-  private final AuctionSniper sniper = new AuctionSniper(ITEM, auction); 
+  private final AuctionSniper sniper = new AuctionSniper(AUCTION_ITEM, auction);
   
   @Before public void attachListener() {
     sniper.addSniperListener(sniperListener);
@@ -234,7 +234,7 @@ public class AuctionSniperTest {
   private void expectSniperToFailWhenItIs(final String state) {
     context.checking(new Expectations() {{
       atLeast(1).of(sniperListener).sniperStateChanged(
-          new SniperSnapshot(ITEM_ID, 00, 0, SniperState.FAILED)); 
+          new SniperSnapshot(ITEM_ID, 00, 0, SniperState.FAILED));
                                       when(sniperState.is(state));
     }});
   }

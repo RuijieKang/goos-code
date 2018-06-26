@@ -4,9 +4,9 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import auctionsniper.SniperSnapshot;
-import auctionsniper.SniperState;
-import auctionsniper.ui.Column;
+import auctionsniper.domain.value.SniperSnapshot;
+import auctionsniper.domain.value.SniperState;
+import auctionsniper.ports.ui.Column;
 
 public class ColumnTest {
 

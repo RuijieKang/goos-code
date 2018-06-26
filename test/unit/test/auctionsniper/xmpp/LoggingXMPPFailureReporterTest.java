@@ -11,7 +11,7 @@ import org.junit.AfterClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import auctionsniper.xmpp.LoggingXMPPFailureReporter;
+import auctionsniper.ports.xmpp.LoggingXMPPFailureReporter;
 
 @RunWith(JMock.class) 
 public class LoggingXMPPFailureReporterTest { 

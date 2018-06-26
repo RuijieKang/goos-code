@@ -6,8 +6,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import auctionsniper.SniperSnapshot;
-import auctionsniper.SniperState;
+import auctionsniper.domain.value.SniperSnapshot;
+import auctionsniper.domain.value.SniperState;
 
 public class SniperSnapshotTest {
 

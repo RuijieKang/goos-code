@@ -1,15 +1,15 @@
 package test.auctionsniper;
 
+import auctionsniper.domain.value.AuctionItem;
 import org.jmock.Expectations;
 import org.jmock.Mockery;
 import org.jmock.integration.junit4.JMock;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import auctionsniper.AuctionSniper;
-import auctionsniper.SniperPortfolio;
-import auctionsniper.UserRequestListener.Item;
-import auctionsniper.SniperPortfolio.PortfolioListener;
+import auctionsniper.domain.AuctionSniper;
+import auctionsniper.domain.SniperPortfolio;
+import auctionsniper.domain.SniperPortfolio.PortfolioListener;
 
 @RunWith(JMock.class)
 public class SniperPortfolioTest {
@@ -19,7 +19,7 @@ public class SniperPortfolioTest {
   
   @Test public void
   notifiesListenersOfNewSnipers() {
-    final AuctionSniper sniper = new AuctionSniper(new Item("item id", 123), null);
+    final AuctionSniper sniper = new AuctionSniper(new AuctionItem("item id", 123), null);
     context.checking(new Expectations() {{
       oneOf(listener).sniperAdded(sniper);
     }});

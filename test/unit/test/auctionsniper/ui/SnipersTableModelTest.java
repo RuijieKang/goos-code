@@ -9,6 +9,7 @@ import static org.junit.Assert.assertThat;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 
+import auctionsniper.domain.value.AuctionItem;
 import org.hamcrest.Matcher;
 import org.jmock.Expectations;
 import org.jmock.Mockery;
@@ -17,13 +18,12 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import auctionsniper.AuctionSniper;
-import auctionsniper.SniperSnapshot;
-import auctionsniper.SniperState;
-import auctionsniper.UserRequestListener.Item;
-import auctionsniper.ui.Column;
-import auctionsniper.ui.SnipersTableModel;
-import auctionsniper.util.Defect;
+import auctionsniper.domain.AuctionSniper;
+import auctionsniper.domain.value.SniperSnapshot;
+import auctionsniper.domain.value.SniperState;
+import auctionsniper.ports.ui.Column;
+import auctionsniper.ports.ui.SnipersTableModel;
+import auctionsniper.humble.util.Defect;
 
 @RunWith(JMock.class) 
 public class SnipersTableModelTest { 
@@ -31,7 +31,7 @@ public class SnipersTableModelTest {
   private final Mockery context = new Mockery(); 
   private TableModelListener listener = context.mock(TableModelListener.class); 
   private final SnipersTableModel model = new SnipersTableModel();
-  private final AuctionSniper sniper = new AuctionSniper(new Item(ITEM_ID, 234), null); 
+  private final AuctionSniper sniper = new AuctionSniper(new AuctionItem(ITEM_ID, 234), null);
   
   @Before public void attachModelListener() {
     model.addTableModelListener(listener); 
@@ -91,7 +91,7 @@ public class SnipersTableModelTest {
   
   @Test public void 
   holdsSnipersInAdditionOrder() {
-    AuctionSniper sniper2 = new AuctionSniper(new Item("item 1", 345), null);
+    AuctionSniper sniper2 = new AuctionSniper(new AuctionItem("item 1", 345), null);
     context.checking(new Expectations() { {
       ignoring(listener);
     }});
@@ -105,7 +105,7 @@ public class SnipersTableModelTest {
   
   @Test public void 
   updatesCorrectRowForSniper() {
-    AuctionSniper sniper2 = new AuctionSniper(new Item("item 1", 345), null);
+    AuctionSniper sniper2 = new AuctionSniper(new AuctionItem("item 1", 345), null);
     context.checking(new Expectations() { {
       allowing(listener).tableChanged(with(anyInsertionEvent()));
 

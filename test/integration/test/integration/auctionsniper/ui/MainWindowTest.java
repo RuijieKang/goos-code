@@ -2,13 +2,13 @@ package test.integration.auctionsniper.ui;
 
 import static org.hamcrest.Matchers.equalTo;
 
+import auctionsniper.domain.value.AuctionItem;
 import org.junit.Test;
 
-import test.endtoend.auctionsniper.AuctionSniperDriver;
-import auctionsniper.UserRequestListener;
-import auctionsniper.SniperPortfolio;
-import auctionsniper.UserRequestListener.Item;
-import auctionsniper.ui.MainWindow;
+import test.endtoend.auctionsniper.driver.AuctionSniperDriver;
+import auctionsniper.domain.adaptors.ui.UserRequestListener;
+import auctionsniper.domain.SniperPortfolio;
+import auctionsniper.ports.ui.MainWindow;
 
 import com.objogate.wl.swing.probe.ValueMatcherProbe;
 
@@ -18,13 +18,13 @@ public class MainWindowTest {
   
   @Test public void 
   makesUserRequestWhenJoinButtonClicked() { 
-    final ValueMatcherProbe<Item> itemProbe = 
-      new ValueMatcherProbe<Item>(equalTo(new Item("an item-id", 789)), 
+    final ValueMatcherProbe<AuctionItem> itemProbe =
+      new ValueMatcherProbe<AuctionItem>(equalTo(new AuctionItem("an item-id", 789)),
                                   "item request");
     mainWindow.addUserRequestListener( 
         new UserRequestListener() { 
-          public void joinAuction(Item item) { 
-            itemProbe.setReceivedValue(item); 
+          public void joinAuction(AuctionItem auctionItem) {
+            itemProbe.setReceivedValue(auctionItem);
           } 
         }); 
     

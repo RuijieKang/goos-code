@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="goos-code:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/goos_code_jar</output-path>
+    <root id="archive" name="goos-code_jar.jar">
+      <element id="module-output" name="goos-code" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/deploy/smack_3_1_0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/deploy/commons-lang-2.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/deploy/smackx_3_1_0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/deploy/commons-io-1.4.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

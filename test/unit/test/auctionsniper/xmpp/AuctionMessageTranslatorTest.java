@@ -8,10 +8,10 @@ import org.jmock.integration.junit4.JMock;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import auctionsniper.AuctionEventListener;
-import auctionsniper.AuctionEventListener.PriceSource;
-import auctionsniper.xmpp.AuctionMessageTranslator;
-import auctionsniper.xmpp.XMPPFailureReporter;
+import auctionsniper.domain.adaptors.xmpp.AuctionEventListener;
+import auctionsniper.domain.adaptors.xmpp.AuctionEventListener.PriceSource;
+import auctionsniper.ports.xmpp.AuctionMessageTranslator;
+import auctionsniper.ports.xmpp.XMPPFailureReporter;
 
 @RunWith(JMock.class) 
 public class AuctionMessageTranslatorTest { 

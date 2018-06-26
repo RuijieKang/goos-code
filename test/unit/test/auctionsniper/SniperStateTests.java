@@ -4,8 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import auctionsniper.SniperState;
-import auctionsniper.util.Defect;
+import auctionsniper.domain.value.SniperState;
+import auctionsniper.humble.util.Defect;
 
 public class SniperStateTests {
 
