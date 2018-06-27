@@ -98,27 +98,4 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <build>
-        <sourceDirectory>C:\SOURCE\git-hub\goos-code\src\application\java</sourceDirectory>
-        <scriptSourceDirectory>C:\SOURCE\git-hub\goos-code\src\application\scripts</scriptSourceDirectory>
-        <testSourceDirectory>C:\SOURCE\git-hub\goos-code\src\test\java</testSourceDirectory>
-
-        <outputDirectory>C:\SOURCE\git-hub\goos-code\target\classes</outputDirectory>
-        <testOutputDirectory>C:\SOURCE\git-hub\goos-code\target\test-classes</testOutputDirectory>
-
-        <resources>
-            <resource>
-                <directory>C:\SOURCE\git-hub\goos-code\src\application\resources</directory>
-            </resource>
-        </resources>
-        <testResources>
-            <testResource>
-                <directory>C:\SOURCE\git-hub\goos-code\src\test\resources</directory>
-            </testResource>
-        </testResources>
-
-        <directory>C:\SOURCE\git-hub\goos-code\target</directory>
-        <finalName>goos-code-1.0-SNAPSHOT</finalName>
-    </build>
 </project>
