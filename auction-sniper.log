@@ -1,0 +1,2 @@
+Jun 27, 2018 10:29:01 AM auctionsniper.ports.xmpp.LoggingXMPPFailureReporter cannotTranslateMessage
+SEVERE: <sniper@cpx-u7677epp510.dir.svc.accenture.com/Auction> Could not translate message "a broken message" because "java.lang.ArrayIndexOutOfBoundsException: 1"
