@@ -100,8 +100,8 @@
     </dependencies>
 
     <build>
-        <sourceDirectory>C:\SOURCE\git-hub\goos-code\src\main\java</sourceDirectory>
-        <scriptSourceDirectory>C:\SOURCE\git-hub\goos-code\src\main\scripts</scriptSourceDirectory>
+        <sourceDirectory>C:\SOURCE\git-hub\goos-code\src\application\java</sourceDirectory>
+        <scriptSourceDirectory>C:\SOURCE\git-hub\goos-code\src\application\scripts</scriptSourceDirectory>
         <testSourceDirectory>C:\SOURCE\git-hub\goos-code\src\test\java</testSourceDirectory>
 
         <outputDirectory>C:\SOURCE\git-hub\goos-code\target\classes</outputDirectory>
@@ -109,7 +109,7 @@
 
         <resources>
             <resource>
-                <directory>C:\SOURCE\git-hub\goos-code\src\main\resources</directory>
+                <directory>C:\SOURCE\git-hub\goos-code\src\application\resources</directory>
             </resource>
         </resources>
         <testResources>

@@ -1,9 +1,10 @@
 package endtoend.auctionsniper.composer;
 
 import auctionsniper.domain.value.SniperState;
+import auctionsniper.humble.bootstrap.Main;
 import auctionsniper.ports.ui.MainWindow;
 import static auctionsniper.ports.ui.SnipersTableModel.textFor;
-import auctionsniper.humble.bootstrap.Main;
+import auctionsniper.humble.bootstrap.Application;
 import endtoend.auctionsniper.driver.AuctionLogDriver;
 import endtoend.auctionsniper.driver.AuctionSniperDriver;
 

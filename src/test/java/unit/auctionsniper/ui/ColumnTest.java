@@ -1,12 +1,13 @@
 package unit.auctionsniper.ui;
 
-import static org.junit.Assert.assertEquals;
-
-import org.junit.Test;
-
 import auctionsniper.domain.value.SniperSnapshot;
 import auctionsniper.domain.value.SniperState;
 import auctionsniper.ports.ui.Column;
+
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+
+
 
 public class ColumnTest {
 
