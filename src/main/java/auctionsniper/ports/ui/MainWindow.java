@@ -16,8 +16,8 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import auctionsniper.domain.value.AuctionItem;
-import auctionsniper.domain.adaptors.ui.UserRequestListener;
-import auctionsniper.domain.SniperPortfolio;
+import auctionsniper.domain.adaptors.ui.UserRequestController;
+import auctionsniper.domain.AuctionSniperPortfolio;
 import auctionsniper.humble.util.Announcer;
 
 
@@ -29,10 +29,10 @@ public class MainWindow extends JFrame {
   public static final String JOIN_BUTTON_NAME = "join button";
   public static final String NEW_ITEM_STOP_PRICE_NAME = "stop price";
   
-  private final Announcer<UserRequestListener> userRequests = Announcer.to(UserRequestListener.class); 
+  private final Announcer<UserRequestController> userRequests = Announcer.to(UserRequestController.class);
 
   
-  public MainWindow(SniperPortfolio portfolio){ 
+  public MainWindow(AuctionSniperPortfolio portfolio){
     super("Auction Sniper"); 
     setName(MainWindow.MAIN_WINDOW_NAME); 
     fillContentPane(makeSnipersTable(portfolio), makeControls());
@@ -41,8 +41,8 @@ public class MainWindow extends JFrame {
     setVisible(true); 
   } 
   
-  public void addUserRequestListener(UserRequestListener userRequestListener) {
-    userRequests.addListener(userRequestListener); 
+  public void addUserRequestListener(UserRequestController userRequestController) {
+    userRequests.addListener(userRequestController);
   } 
 
   private void fillContentPane(JTable snipersTable, JPanel controls) { 
@@ -93,7 +93,7 @@ public class MainWindow extends JFrame {
     return stopPriceField;
   }
 
-  private JTable makeSnipersTable(SniperPortfolio portfolio) { 
+  private JTable makeSnipersTable(AuctionSniperPortfolio portfolio) {
     SnipersTableModel model = new SnipersTableModel();
     portfolio.addPortfolioListener(model);
     JTable snipersTable = new JTable(model); 

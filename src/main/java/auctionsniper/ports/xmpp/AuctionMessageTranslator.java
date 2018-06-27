@@ -1,7 +1,7 @@
 package auctionsniper.ports.xmpp;
 
-import static auctionsniper.domain.adaptors.xmpp.AuctionEventListener.PriceSource.FromOtherBidder;
-import static auctionsniper.domain.adaptors.xmpp.AuctionEventListener.PriceSource.FromSniper;
+import static auctionsniper.domain.adaptors.xmpp.AuctionOperationalEventListener.PriceSource.FromOtherBidder;
+import static auctionsniper.domain.adaptors.xmpp.AuctionOperationalEventListener.PriceSource.FromSniper;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,15 +10,15 @@ import org.jivesoftware.smack.Chat;
 import org.jivesoftware.smack.MessageListener;
 import org.jivesoftware.smack.packet.Message;
 
-import auctionsniper.domain.adaptors.xmpp.AuctionEventListener;
-import auctionsniper.domain.adaptors.xmpp.AuctionEventListener.PriceSource;
+import auctionsniper.domain.adaptors.xmpp.AuctionOperationalEventListener;
+import auctionsniper.domain.adaptors.xmpp.AuctionOperationalEventListener.PriceSource;
 
 public class AuctionMessageTranslator implements MessageListener { 
-  private final AuctionEventListener listener;
+  private final AuctionOperationalEventListener listener;
   private final String sniperId;
   private final XMPPFailureReporter failureReporter;
 
-  public AuctionMessageTranslator(String sniperId, AuctionEventListener listener, XMPPFailureReporter failureReporter) {
+  public AuctionMessageTranslator(String sniperId, AuctionOperationalEventListener listener, XMPPFailureReporter failureReporter) {
     this.sniperId = sniperId;
     this.listener = listener;
     this.failureReporter = failureReporter;

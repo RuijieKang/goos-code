@@ -1,10 +1,11 @@
 package auctionsniper.domain.adaptors.xmpp;
 
-import auctionsniper.domain.adaptors.xmpp.AuctionEventListener;
-
+/**
+ * Someone from the ports layer should take this role
+ */
 public interface Auction {
-
   void join();
   void bid(int amount);
-  void addAuctionEventListener(AuctionEventListener listener);
+
+  void addAuctionEventListener(AuctionOperationalEventListener listener);
 }

@@ -14,7 +14,7 @@ import org.junit.Test;
 import endtoend.auctionsniper.composer.ApplicationRunner;
 import endtoend.auctionsniper.composer.FakeAuctionServer;
 import auctionsniper.domain.adaptors.xmpp.Auction;
-import auctionsniper.domain.adaptors.xmpp.AuctionEventListener;
+import auctionsniper.domain.adaptors.xmpp.AuctionOperationalEventListener;
 import auctionsniper.ports.xmpp.XMPPAuctionException;
 import auctionsniper.ports.xmpp.XMPPAuctionHouse;
 
@@ -52,9 +52,9 @@ public class XMPPAuctionHouseTest {
     assertTrue("should have been closed", auctionWasClosed.await(4, SECONDS)); 
   } 
 
-  private AuctionEventListener 
+  private AuctionOperationalEventListener
   auctionClosedListener(final CountDownLatch auctionWasClosed) { 
-    return new AuctionEventListener() { 
+    return new AuctionOperationalEventListener() {
       public void auctionClosed() { 
         auctionWasClosed.countDown(); 
       } 

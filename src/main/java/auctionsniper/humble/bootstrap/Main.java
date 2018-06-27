@@ -6,8 +6,8 @@ import java.awt.event.WindowEvent;
 import javax.swing.SwingUtilities;
 
 import auctionsniper.domain.adaptors.xmpp.AuctionHouse;
-import auctionsniper.domain.SniperLauncher;
-import auctionsniper.domain.SniperPortfolio;
+import auctionsniper.domain.AuctionSniperLauncher;
+import auctionsniper.domain.AuctionSniperPortfolio;
 import auctionsniper.ports.ui.MainWindow;
 import auctionsniper.ports.xmpp.XMPPAuctionHouse;
 
@@ -16,7 +16,7 @@ public class Main {
   private static final int ARG_USERNAME = 1;
   private static final int ARG_PASSWORD = 2;
 
-  private final SniperPortfolio portfolio = new SniperPortfolio();
+  private final AuctionSniperPortfolio portfolio = new AuctionSniperPortfolio();
 
   private MainWindow ui;
 
@@ -48,7 +48,7 @@ public class Main {
   } 
 
   private void addUserRequestListenerFor(final AuctionHouse auctionHouse) {
-    ui.addUserRequestListener(new SniperLauncher(auctionHouse, portfolio));
+    ui.addUserRequestListener(new AuctionSniperLauncher(auctionHouse, portfolio));
 
   } 
 }

@@ -8,8 +8,8 @@ import org.jmock.integration.junit4.JMock;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import auctionsniper.domain.adaptors.xmpp.AuctionEventListener;
-import auctionsniper.domain.adaptors.xmpp.AuctionEventListener.PriceSource;
+import auctionsniper.domain.adaptors.xmpp.AuctionOperationalEventListener;
+import auctionsniper.domain.adaptors.xmpp.AuctionOperationalEventListener.PriceSource;
 import auctionsniper.ports.xmpp.AuctionMessageTranslator;
 import auctionsniper.ports.xmpp.XMPPFailureReporter;
 
@@ -20,7 +20,7 @@ public class AuctionMessageTranslatorTest {
   
   private final Mockery context = new Mockery(); 
   private final XMPPFailureReporter failureReporter = context.mock(XMPPFailureReporter.class);
-  private final AuctionEventListener listener = context.mock(AuctionEventListener.class);
+  private final AuctionOperationalEventListener listener = context.mock(AuctionOperationalEventListener.class);
   private final AuctionMessageTranslator translator = new AuctionMessageTranslator(SNIPER_ID, listener, failureReporter);
   
   @Test public void 

@@ -1,17 +1,20 @@
 package auctionsniper.domain;
 
+import auctionsniper.domain.adaptors.ui.AuctionSniperPublisher;
 import auctionsniper.domain.adaptors.xmpp.Auction;
-import auctionsniper.domain.adaptors.xmpp.AuctionEventListener;
-import auctionsniper.domain.adaptors.ui.SniperListener;
+import auctionsniper.domain.adaptors.xmpp.AuctionOperationalEventListener;
+import auctionsniper.domain.adaptors.ui.AuctionSniperListener;
 import auctionsniper.domain.value.AuctionItem;
 import auctionsniper.domain.value.SniperSnapshot;
 import auctionsniper.humble.util.Announcer;
 
-public class AuctionSniper implements AuctionEventListener {
-  private final Announcer<SniperListener> listeners = Announcer.to(SniperListener.class);
+public class AuctionSniper implements AuctionOperationalEventListener,AuctionSniperPublisher {
+
   private final Auction auction;
   private SniperSnapshot snapshot;
   private final AuctionItem auctionItem;
+
+  private final Announcer<AuctionSniperListener> listeners = Announcer.to(AuctionSniperListener.class);
     
   public AuctionSniper(AuctionItem auctionItem, Auction auction) {
     this.auctionItem = auctionItem;
@@ -19,7 +22,7 @@ public class AuctionSniper implements AuctionEventListener {
     this.snapshot = SniperSnapshot.joining(auctionItem.identifier);
   }
 
-  public void addSniperListener(SniperListener listener) {
+  public void addSniperListener(AuctionSniperListener listener) {
     listeners.addListener(listener);
   }
   

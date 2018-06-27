@@ -1,5 +1,6 @@
 package unit.auctionsniper;
 
+import auctionsniper.domain.adaptors.ui.AuctionSniperPortfolioListener;
 import auctionsniper.domain.value.AuctionItem;
 import org.jmock.Expectations;
 import org.jmock.Mockery;
@@ -8,14 +9,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import auctionsniper.domain.AuctionSniper;
-import auctionsniper.domain.SniperPortfolio;
-import auctionsniper.domain.SniperPortfolio.PortfolioListener;
+import auctionsniper.domain.AuctionSniperPortfolio;
 
 @RunWith(JMock.class)
 public class SniperPortfolioTest {
   private final Mockery context = new Mockery();
-  private final PortfolioListener listener = context.mock(PortfolioListener.class);
-  private final SniperPortfolio portfolio = new SniperPortfolio();
+  private final AuctionSniperPortfolioListener listener = context.mock(AuctionSniperPortfolioListener.class);
+  private final AuctionSniperPortfolio portfolio = new AuctionSniperPortfolio();
   
   @Test public void
   notifiesListenersOfNewSnipers() {

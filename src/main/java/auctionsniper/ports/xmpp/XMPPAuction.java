@@ -5,14 +5,14 @@ import org.jivesoftware.smack.XMPPConnection;
 import org.jivesoftware.smack.XMPPException;
 
 import auctionsniper.domain.adaptors.xmpp.Auction;
-import auctionsniper.domain.adaptors.xmpp.AuctionEventListener;
+import auctionsniper.domain.adaptors.xmpp.AuctionOperationalEventListener;
 import auctionsniper.humble.util.Announcer;
 
 public class XMPPAuction implements Auction { 
   public static final String JOIN_COMMAND_FORMAT = "SOLVersion: 1.1; Command: JOIN;";
   public static final String BID_COMMAND_FORMAT = "SOLVersion: 1.1; Command: BID; Price: %d;";
 
-  private final Announcer<AuctionEventListener> auctionEventListeners = Announcer.to(AuctionEventListener.class);
+  private final Announcer<AuctionOperationalEventListener> auctionEventListeners = Announcer.to(AuctionOperationalEventListener.class);
   private final Chat chat;
   private final XMPPFailureReporter failureReporter;
   
@@ -30,7 +30,7 @@ public class XMPPAuction implements Auction {
     sendMessage(JOIN_COMMAND_FORMAT); 
   } 
  
-  public void addAuctionEventListener(AuctionEventListener listener) {
+  public void addAuctionEventListener(AuctionOperationalEventListener listener) {
     auctionEventListeners.addListener(listener);
   }
 
@@ -38,9 +38,9 @@ public class XMPPAuction implements Auction {
     return new AuctionMessageTranslator(connection.getUser(), auctionEventListeners.announce(), failureReporter);
   } 
 
-  private AuctionEventListener 
+  private AuctionOperationalEventListener
   chatDisconnectorFor(final AuctionMessageTranslator translator) { 
-    return new AuctionEventListener() { 
+    return new AuctionOperationalEventListener() {
       public void auctionFailed() { 
         chat.removeMessageListener(translator); 
       }

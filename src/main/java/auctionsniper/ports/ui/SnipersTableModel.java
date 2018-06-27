@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
 import auctionsniper.domain.AuctionSniper;
-import auctionsniper.domain.adaptors.ui.SniperListener;
+import auctionsniper.domain.adaptors.ui.AuctionSniperPortfolioListener;
+import auctionsniper.domain.adaptors.ui.AuctionSniperListener;
 import auctionsniper.domain.value.SniperSnapshot;
 import auctionsniper.domain.value.SniperState;
-import auctionsniper.domain.SniperPortfolio.PortfolioListener;
 import auctionsniper.humble.util.Defect;
 
-public class SnipersTableModel extends AbstractTableModel implements SniperListener, PortfolioListener {
+public class SnipersTableModel extends AbstractTableModel implements AuctionSniperListener, AuctionSniperPortfolioListener {
   private final static String[] STATUS_TEXT = { 
     "Joining", "Bidding", "Winning", "Losing", "Lost", "Won", "Failed" 
   };
@@ -50,7 +50,7 @@ public class SnipersTableModel extends AbstractTableModel implements SniperListe
 
   public void sniperAdded(AuctionSniper sniper) {
     addSniperSnapshot(sniper.getSnapshot());
-    sniper.addSniperListener(new SwingThreadSniperListener(this));
+    sniper.addSniperListener(new SwingThreadAuctionSniperListener(this));
   } 
 
   private void addSniperSnapshot(SniperSnapshot newSniper) {
